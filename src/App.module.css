@@ -1,0 +1,19 @@
+.app {
+  height: 100vh;
+  background-image: url(https://wallpaperaccess.com/full/2629319.png);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather {
+  background: white;
+  border-radius: 32px;
+  box-shadow: 0 0 16px rgb(0, 0, 0, 0.5);
+}
+
+.bottom {
+  display: flex;
+  padding: 36px 0;
+}

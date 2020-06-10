@@ -1,0 +1,71 @@
+.current { 
+  display: flex;
+  background-image: url(https://i.imgur.com/GhQZhaO.jpg);
+  background-size: cover;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  padding: 64px 0;
+  color: white;
+  position: relative;
+}
+
+.left {
+  padding: 0 96px;
+}
+
+.right {
+  padding: 0 96px;
+  margin-left: 128px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bottom {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1.5rem;
+}
+
+.temperature {
+  text-align: center;
+  font-size: 7rem;
+}
+
+.weather {
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  margin-top: 0.25rem;
+}
+
+.metas {
+  margin-top: 3rem;
+  display: flex;
+}
+
+.humidity {
+  margin-right: 32px;
+}
+
+.wind {
+  margin-left: 32px;
+}
+
+.city {
+  margin-bottom: 0;
+}
+
+.city::after {
+  content: '';
+  display: block;
+  margin-top: 1rem;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  width: 50%;
+  transform: translateX(50%);
+}

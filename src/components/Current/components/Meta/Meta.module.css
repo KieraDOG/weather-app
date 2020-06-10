@@ -1,0 +1,13 @@
+.meta {
+  text-align: center;
+}
+
+.title {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.value {
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+}

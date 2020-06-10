@@ -1,0 +1,27 @@
+.city {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: normal;
+  margin-right: 0.5rem;
+  width: 96px;
+  letter-spacing: 1px;
+}
+
+.temperature {
+  font-size: 1.5rem;
+  color: #607D8B;
+}
+
+.weather {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem
+}
+
+.weather > span {
+  color: #636e72;
+}
