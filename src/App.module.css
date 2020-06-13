@@ -1,5 +1,5 @@
 .app {
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(https://wallpaperaccess.com/full/2629319.png);
   background-size: cover;
   display: flex;
@@ -8,6 +8,7 @@
 }
 
 .weather {
+  margin: 60px;
   background: white;
   border-radius: 32px;
   box-shadow: 0 0 16px rgb(0, 0, 0, 0.5);
