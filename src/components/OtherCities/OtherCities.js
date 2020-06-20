@@ -3,7 +3,7 @@ import styles from './OtherCities.module.css';
 import City from './components/City';
 import getWeathers from '../../apis/getWeathers';
 
-const CITIES = [{
+export const CITIES = [{
   name: 'Melbourne',
   id: '2158177',
 }, {
@@ -46,7 +46,7 @@ class OtherCities extends React.Component {
     const { data, loading } = this.state;
 
     return (
-      <div className={styles.otherCities}>
+      <div data-testid="OTHER_CITIES" className={styles.otherCities}>
         <h2 className={styles.header}>Other Cities</h2>
         {loading ? (
           <div className={styles.loading}>Loading...</div>

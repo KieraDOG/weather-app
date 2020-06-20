@@ -1,9 +1,17 @@
 .forecast {
-  display: flex;
-  padding: 0 56px;
-  align-items: center;
+  padding: 0 48px;
+  flex: 1;
 }
 
-.forecast > * {
-  margin: 0 8px;
+.header {
+  margin: 0;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.weathers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

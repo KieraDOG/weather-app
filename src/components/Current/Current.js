@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import styles from './Current.module.css';
 import Meta from './components/Meta';
@@ -41,30 +40,32 @@ class Current extends React.Component {
     const { data, loading } = this.state;
 
     return (
-      <div className={styles.current}>
+      <div data-testid="CURRENT" className={styles.current}>
         {loading ? (
-          <div className={styles.loading}>Loading...</div>
+          <div className={styles.left}>
+            <div className={styles.loading}>Loading...</div>
+          </div>
         ) : (
           <React.Fragment>
             <div className={styles.left}>
-              <div className={styles.temperature}>
+              <div data-testid="TEMP" className={styles.temperature}>
                 <Temperature>{data.main.temp}</Temperature>
               </div>
-              <div className={styles.weather}>
+              <div data-testid="WEATHER" className={styles.weather}>
                 <Text>{data.weather[0].main}</Text>
               </div>
               <div className={styles.metas}>
-                <div className={styles.humidity}>
+                <div data-testid="HUMIDITY" className={styles.humidity}>
                   <Meta title="HUMIDITY" value={`${data.main.humidity}%`} />
                 </div>
                 <VerticalDivider width="2px" color="rgba(255, 255, 255, 0.7)" />
-                <div className={styles.wind}>
+                <div data-testid="WIND" className={styles.wind}>
                   <Meta title="WIND" value={`${data.wind.speed} K/M`} />
                 </div>
               </div>
             </div>
             <div className={styles.right}>
-            <h1 className={styles.city}>{data.name}</h1>
+            <h1 data-testid="NAME" className={styles.city}>{data.name}</h1>
             </div>
           </React.Fragment>
         )}

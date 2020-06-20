@@ -5,18 +5,16 @@
 }
 
 .day {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  font-weight: 200;
+  font-weight: normal;
+  margin: 1rem 0;
+}
+
+.icon {
+  width: 70px;
 }
 
 .temperature {
-  font-size: 2rem;
-  font-weight: 300;
-}
-
-.description {
-  font-size: 0.75rem;
+  font-size: 1.25rem;
+  margin-top: 1rem;
   color: rgba(0, 0, 0, 0.5);
-  font-weight: bold;
 }

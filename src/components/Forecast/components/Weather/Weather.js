@@ -7,17 +7,17 @@ const Weather = ({
   temperature,
   weather,
 }) => (
-  <div className={styles.weather}>
-    <div className={styles.day}>{day}</div>
-    <div className={styles.temperature}>
-      <Temperature>{temperature}</Temperature>
-    </div>
+  <div data-testid="WEATHER" className={styles.weather}>
+    <h3 data-testid="DAY" className={styles.day}>{day}</h3>
     <img 
+      data-testid="WEATHER_ICON"
       className={styles.icon}
       src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`} 
       alt={weather.description} 
     />
-    <div className={styles.description}>{weather.description}</div>
+    <div data-testid="TEMP" className={styles.temperature}>
+      <Temperature>{temperature}</Temperature>
+    </div>
   </div>
 );
 

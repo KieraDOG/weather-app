@@ -15,7 +15,6 @@
 
 .right {
   padding: 0 96px;
-  margin-left: 128px;
   flex: 1;
   display: flex;
   justify-content: flex-end;
@@ -32,7 +31,7 @@
 
 .temperature {
   text-align: center;
-  font-size: 7rem;
+  font-size: 5rem;
 }
 
 .weather {
@@ -69,4 +68,8 @@
   border-radius: 2px;
   width: 50%;
   transform: translateX(50%);
+}
+
+.loading {
+  font-size: 3rem;
 }

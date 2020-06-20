@@ -7,15 +7,17 @@ const City = ({
   weather,
   temperature,
 }) => (
-  <div className={styles.city}>
-    <h3 className={styles.name}>{name}</h3>
-    <div className={styles.temperature}>
+  <div data-testid="CITY" className={styles.city}>
+    <h3 data-testid="NAME" className={styles.name}>{name}</h3>
+    <div data-testid="TEMP" className={styles.temperature}>
       <Temperature>{temperature}</Temperature>
     </div>
-    <div className={styles.weather}>
-      <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
-      <span>{weather.description}</span>
-    </div>
+    <img 
+      data-testid="WEATHER_ICON"
+      className={styles.weather}
+      src={`http://openweathermap.org/img/wn/${weather.icon}.png`} 
+      alt={weather.description} 
+    />
   </div>
 );
 

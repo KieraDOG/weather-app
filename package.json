@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "react": "^16.13.1",
@@ -17,10 +14,25 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "overrides": [
+      {
+        "files": [
+          "cypress/**/*"
+        ],
+        "plugins": [
+          "cypress"
+        ],
+        "env": {
+          "cypress/globals": true
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
@@ -35,6 +47,12 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^6.0.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "cypress": "^4.8.0",
+    "eslint-plugin-cypress": "^2.11.1",
     "gh-pages": "^3.0.0"
   },
   "homepage": "https://kieradog.github.io/weather-app"
