@@ -2,6 +2,9 @@ import React from 'react';
 import styles from './OtherCities.module.css';
 import City from './components/City';
 import getWeathers from '../../apis/getWeathers';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 export const CITIES = [{
   name: 'Melbourne',
@@ -24,6 +27,7 @@ class OtherCities extends React.Component {
     this.state = {
       data: null,
       loading: true,
+      toggle: false,
     }
   }
 
@@ -43,28 +47,38 @@ class OtherCities extends React.Component {
   }
 
   render() {
-    const { data, loading } = this.state;
+    const { data, loading, toggle } = this.state;
 
     return (
       <div data-testid="OTHER_CITIES" className={styles.otherCities}>
-        <h2 className={styles.header}>Other Cities</h2>
-        {loading ? (
-          <div className={styles.loading}>Loading...</div>
-        ) : (
-          <div className={styles.cities}>
-            {data.list.map((item) => (
-              <City 
-                key={item.id}
-                name={item.name} 
-                temperature={parseInt(item.main.temp)}
-                weather={{ 
-                  icon: item.weather[0].icon, 
-                  description: item.weather[0].main,
-                }} 
-              />
-            ))}
-          </div>
+        {!toggle && (
+          <button 
+            className={styles.toggle} 
+            onClick={() => this.setState((s) => ({ toggle: !s.toggle }))}
+          >
+            View More Cities ...
+          </button>
         )}
+        <div className={cx('container', { active: toggle })}>
+          <h2 className={styles.header}>Other Cities</h2>
+          {loading ? (
+            <div className={styles.loading}>Loading...</div>
+          ) : (
+            <div className={styles.cities}>
+              {data.list.map((item) => (
+                <City 
+                  key={item.id}
+                  name={item.name} 
+                  temperature={parseInt(item.main.temp)}
+                  weather={{ 
+                    icon: item.weather[0].icon, 
+                    description: item.weather[0].main,
+                  }} 
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     )
   }
