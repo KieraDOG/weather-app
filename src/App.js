@@ -15,7 +15,7 @@ class App extends React.Component {
           </div>
           <div className={styles.bottom}>
             <OtherCities />
-            <VerticalDivider color="rgba(0, 0, 0, 0.1)" width="3px" />
+            <VerticalDivider className={styles.verticalDivider} color="rgba(0, 0, 0, 0.1)" width="3px" />
             <Forecast />
           </div>
         </div>

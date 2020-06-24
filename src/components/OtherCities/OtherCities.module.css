@@ -1,12 +1,26 @@
 .otherCities {
   border-bottom-left-radius: 32px;
   border-bottom-right-radius: 32px;
-  padding: 0 48px;
+  padding: 24px 36px;
+  border-top: 1px solid rgb(0, 0, 0, 0.2);
 }
 
 .header {
   margin: 0;
-  margin-bottom: 1rem;
-  font-weight: 300;
+  margin-bottom: 0.5rem;
   letter-spacing: 2px;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .otherCities {
+    padding: 0 48px;
+    border: 0;
+  }
+
+  .header {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
 }

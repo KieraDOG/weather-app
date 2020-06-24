@@ -31,16 +31,6 @@ const Forecast = () => (
         temperature="8"
         weather={{ icon: '09d', description: 'Rain' }} 
       />
-      <Weather 
-        day="SAT" 
-        temperature="8"
-        weather={{ icon: '09d', description: 'Rain' }} 
-      />
-      <Weather 
-        day="SUN" 
-        temperature="8"
-        weather={{ icon: '09d', description: 'Rain' }} 
-      />
     </div>
   </div>
 );
