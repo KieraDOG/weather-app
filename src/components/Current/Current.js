@@ -1,15 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styles from './Current.module.css';
 import Meta from './components/Meta';
 import Text from './components/Text';
 import Temperature from '../Temperature';
 import VerticalDivider from '../VerticalDivider';
 import getWeather from '../../apis/getWeather';
-
-const DEFAULT_CITY = {
-  name: 'Melbourne',
-  id: '2158177',
-};
 
 class Current extends React.Component {
   constructor(props) {
@@ -25,8 +21,20 @@ class Current extends React.Component {
     this.getWeather();
   }
 
+  componentDidUpdate(props) {
+    if (props.city !== this.props.city) {
+      this.getWeather();
+    }
+  }
+
   async getWeather() {
-    const { id } = DEFAULT_CITY;
+    const { city } = this.props;
+
+    this.setState({
+      loading: true,
+    });
+
+    const { id } = city;
 
     const { data } = await getWeather(id);
 
@@ -75,4 +83,10 @@ class Current extends React.Component {
   }
 }
 
-export default Current;
+const mapStateToProps = (state) => ({
+  city: state.city,
+});
+
+const CurrentContainer = connect(mapStateToProps)(Current);
+
+export default CurrentContainer;

@@ -6,8 +6,9 @@ const City = ({
   name,
   weather,
   temperature,
+  onClick,
 }) => (
-  <div data-testid="CITY" className={styles.city}>
+  <button data-testid="CITY" className={styles.city} onClick={onClick}>
     <h3 data-testid="NAME" className={styles.name}>{name}</h3>
     <div data-testid="TEMP" className={styles.temperature}>
       <Temperature>{temperature}</Temperature>
@@ -18,7 +19,7 @@ const City = ({
       src={`http://openweathermap.org/img/wn/${weather.icon}.png`} 
       alt={weather.description} 
     />
-  </div>
+  </button>
 );
 
 export default City;

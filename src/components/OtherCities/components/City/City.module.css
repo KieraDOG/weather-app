@@ -1,6 +1,12 @@
 .city {
   display: flex;
   align-items: center;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
 }
 
 .name {
