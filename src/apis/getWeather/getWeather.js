@@ -1,7 +1,7 @@
 import OpenWeatherMap from '../../utils/OpenWeatherMap';
 
-export default (id) => OpenWeatherMap.get('/weather', {
-  params: {
-    id,
-  },
+const getWeather = (id) => OpenWeatherMap.get('/weather', { 
+  id, 
 });
+
+export default getWeather;

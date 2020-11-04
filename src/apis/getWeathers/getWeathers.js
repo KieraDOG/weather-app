@@ -1,7 +1,7 @@
 import OpenWeatherMap from '../../utils/OpenWeatherMap';
 
-export default (ids) => OpenWeatherMap.get('/group', {
-  params: {
-    id: ids.join(','),
-  },
+const getWeathers = (ids) => OpenWeatherMap.get('/group', { 
+  id: ids.join(','),
 });
+
+export default getWeathers;

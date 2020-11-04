@@ -1,24 +1,35 @@
-import axios from 'axios';
+import { OPEN_WEATHER_MAP_APP_ID } from '../../config';
+import { UNITS } from '../../constants';
 
-const baseURL = 'https://api.openweathermap.org/data/2.5';
+const OpenWeatherMap = {};
 
-const OpenWeatherMap = axios.create({
-  baseURL,
-});
-
-const enrichRequestWithAppId = (config) => {
-  config.params.appid = '2466213f21b4b723d341e00a430a7673';
-
-  return config;
-}
-
-const enrichRequestWithCelsiusUnits = (config) => {
-  config.params.units = 'metric';
-
-  return config;
+const basePath = 'https://api.openweathermap.org/data/2.5';
+const defaultParams = {
+  units: UNITS,
+  appid: OPEN_WEATHER_MAP_APP_ID,
 };
 
-OpenWeatherMap.interceptors.request.use(enrichRequestWithAppId);
-OpenWeatherMap.interceptors.request.use(enrichRequestWithCelsiusUnits);
+OpenWeatherMap.post = (url, data) => {};
+
+OpenWeatherMap.get = (url, params) => {
+  const thisURL = new URL(`${basePath}${url}`);
+  const thisParams = {
+    ...defaultParams,
+    ...params,
+  };
+
+  Object.keys(thisParams).forEach((key) => {
+    const value = thisParams[key];
+
+    thisURL.searchParams.append(key, value);
+  });
+
+  return fetch(thisURL, { method: 'GET' }).then((response) => response.json());
+};
+
+OpenWeatherMap.put = (url, data) => {};
+
+OpenWeatherMap.delete = (url, params) => {};
+
 
 export default OpenWeatherMap;

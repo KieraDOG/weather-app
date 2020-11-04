@@ -20,13 +20,44 @@ export const CITIES = [{
   id: '2063523',
 }];
 
+// Readable, Maintainable, Reusable
+
+/**
+ * Readable
+ * 
+ * v Object.keys -> url.searchParams -> url -> fetch(url)
+ * v 代码逻辑跨度很长
+ * 
+ *  */
+
+/**
+ * Maintainable
+ * 
+ * v 如果想要增删 params， 我需要理解 Object.keys -> url.searchParams -> url
+ * 
+ *  */
+
+
+/**
+ * Reusable
+ * 
+ * v getWeathers CITIES, 如果别的 Component 想要 Get 别的 cities 的 weathers?
+ * v 复制很多重复的 fetch 和 params 的基本代码。
+ * 
+ *  */
+
+// 代码能力问题?
+// 我代码能力或者知识储备不能完成这样复杂的重构
+// axios!!! 取代 fetch
+
 class OtherCities extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: null,
+      data: undefined,
       loading: true,
+
       toggle: false,
     }
   }
@@ -37,8 +68,7 @@ class OtherCities extends React.Component {
 
   async getWeathers() {
     const ids = CITIES.map((c) => c.id);
-
-    const { data } = await getWeathers(ids);
+    const data = await getWeathers(ids);
 
     this.setState({
       data,
