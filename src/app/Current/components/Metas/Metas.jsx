@@ -14,11 +14,14 @@ const Divider = styled.div`
   opacity: 0.6;
 `;
 
-const Metas = () => (
+const Metas = ({
+  humidity,
+  wind,
+}) => (
   <Container>
-    <Meta title="HUMIDITY">85%</Meta>
+    <Meta title="HUMIDITY">{`${humidity}%`}</Meta>
     <Divider />
-    <Meta title="WIND">1.34 K/M</Meta>
+    <Meta title="WIND">{`${wind} KM/H`}</Meta>
   </Container>
 );
 

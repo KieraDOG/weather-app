@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Current from './Current';
 import background from './assets/background.png';
+import OtherCities from './OtherCities';
+import Forecast from './Forecast';
 
 const Container = styled.div`
   height: 100vh;
@@ -33,15 +35,19 @@ const Divider = styled.div`
   opacity: 0.6;
 `;
 
+const MELBOURNE_CITY_ID = 2158177;
+
 function App() {
+  const [cityId, setCityId] = useState(MELBOURNE_CITY_ID);
+
   return (
     <Container>
       <Panel>
-        <Current />
+        <Current cityId={cityId} />
         <Bottom>
-          <div>Other Cities</div>
+          <OtherCities cityId={cityId} onCityClick={(id) => setCityId(id)} />
           <Divider />
-          <div>Forecast</div>
+          <Forecast />
         </Bottom>
       </Panel>
     </Container>

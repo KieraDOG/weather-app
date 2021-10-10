@@ -30,7 +30,7 @@ Readable, Matainable, Reusable
 - app
   - App (Style, Layout)
     - Current (Style, Layout)
-      {getCurrentWeatherData}
+      {api -> data: { cityName, temperature, weather, humidity, wind }, }
       [SubText]
       - Temperature (Style)
       - SubText (Style)
@@ -52,7 +52,7 @@ Readable, Matainable, Reusable
     - Forecast (渲染5天天气)
       {get5DayForcast}
       - Subtitle (Style)
-      - Days
+      - Day
         - DayOfWeek (Style)
         - WeatherImage (将字符串映射成图片)
         - Temperature (Style)
@@ -61,7 +61,20 @@ Readable, Matainable, Reusable
 
 第二步：用 React 创建一个静态版本
 第三步：确定 UI state 的最小（且完整）表示
+
+- state 从哪里来
+- state 的初始状态
+- state 在那里发生改变
+- state 需要渲染在哪里
+
 第四步：确定 state 放置的位置
 第五步：添加反向数据流
 
 这就是全部了
+
+
+4 个 City， Current 显示一个，Other Cities 显示剩下 3个 City
+
+React 哲学
+
+语意化，Sematic
