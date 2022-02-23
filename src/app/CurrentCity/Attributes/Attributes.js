@@ -1,0 +1,25 @@
+import React from 'react';
+import styled from 'styled-components';
+import Attribute from './components/Attribute';
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+`;
+
+const Divider = styled.div`
+  width: 2px;
+  background: rgba(255, 255, 255, 0.7);
+  margin: 0 1.5rem;
+`;
+
+const Attributes = () => (
+  <Wrapper>
+    <Attribute name="HUMIDITY" data="71%" />
+    <Divider />
+    <Attribute name="WIND" data="14 K/M" /> 
+  </Wrapper>
+);
+
+export default Attributes;
