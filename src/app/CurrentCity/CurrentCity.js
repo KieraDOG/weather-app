@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Temperature from '../../components/Temperature';
 import Attributes from './Attributes';
@@ -22,15 +22,23 @@ const Weather = styled.div`
   text-align: center;
 `;
 
-const CurrentCity = () => (
-  <Wrapper>
-    <Weather>
-      <Temperature size="xl" value="24.12" />
-      <Outlook />
-      <Attributes />
-    </Weather>
-    <CityName />
-  </Wrapper>
-);
+const StyledTemperature = styled(Temperature)`
+  font-size: 5rem;
+`;
+
+const CurrentCity = ({
+  data,
+}) => {
+  return (
+    <Wrapper>
+      <Weather>
+        <StyledTemperature value={data.temperature} />
+        <Outlook weather={data.weather} />
+        <Attributes attributes={{ humidity: data.humidity, wind: data.wind }} />
+      </Weather>
+      <CityName cityName={data.cityName} />
+    </Wrapper>
+  );
+}
 
 export default CurrentCity;

@@ -1,12 +1,14 @@
 import React from 'react';
-import Header from '../../components/Header';
-import CityList from './CityList';
+import SubContent from '../../components/SubContent';
+import CityList from './components/CityList';
 
-const OtherCities = () => (
-  <div>
-    <Header />
-    <CityList />
-  </div>
+const OtherCities = ({
+  weathers,
+  handleCityWeatherClick,
+}) => (
+  <SubContent title="Other Cities">
+    <CityList weathers={weathers} handleCityWeatherClick={handleCityWeatherClick} />
+  </SubContent>
 );
 
 export default OtherCities;

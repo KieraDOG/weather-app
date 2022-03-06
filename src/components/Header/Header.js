@@ -8,9 +8,11 @@ const Wrapper = styled.div`
   font-weight: 300;
 `;
 
-const Header = () => (
+const Header = ({
+  title
+}) => (
   <Wrapper>
-    Other Cities
+    {title}
   </Wrapper>
 );
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -18,11 +18,15 @@ const Line = styled.div`
   transform: translateX(-50%);
 `;
 
-const CityName = () => (
-  <Wrapper>
-    <div>Melbourne</div>
-    <Line />
-  </Wrapper>
-);
+const CityName = ({
+  cityName,
+}) => {
+  return (
+    <Wrapper>
+      <div>{cityName}</div>
+      <Line />
+    </Wrapper>
+  );
+}
 
 export default CityName;

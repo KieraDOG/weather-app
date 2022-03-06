@@ -8,8 +8,14 @@ const Wrapper = styled.div`
   margin-top: 0.25rem;
 `;
 
-const Outlook = () => (
-  <Wrapper>Clouds</Wrapper>
-);
+const Outlook = ({
+  weather,
+}) => {
+  return (
+    <Wrapper>
+      {weather}
+    </Wrapper>
+  );
+}
 
 export default Outlook;

@@ -14,12 +14,16 @@ const Divider = styled.div`
   margin: 0 1.5rem;
 `;
 
-const Attributes = () => (
-  <Wrapper>
-    <Attribute name="HUMIDITY" data="71%" />
-    <Divider />
-    <Attribute name="WIND" data="14 K/M" /> 
-  </Wrapper>
-);
+const Attributes = ({
+  attributes,
+}) => {
+  return (
+    <Wrapper>
+      <Attribute name="HUMIDITY" data={attributes.humidity} />
+      <Divider />
+      <Attribute name="WIND" data={attributes.wind} /> 
+    </Wrapper>
+  );
+}
 
 export default Attributes;

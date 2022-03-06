@@ -1,23 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const SIZE = {
-  base: '1rem',
-  xl: '5rem', 
-}
-
-const Wrapper = styled.div`
-  font-size: ${({ size }) => SIZE[size]};
-`;
 
 const Temperature = ({
   value,
-  size = 'base',
+  className,
 }) => (
-  <Wrapper size={size}>
+  <div className={className}>
     {value}
     °
-  </Wrapper>
+  </div>
 );
 
 export default Temperature;

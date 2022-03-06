@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import CurrentCity from './app/CurrentCity';
 import OtherCities from './app/OtherCities';
@@ -25,16 +25,60 @@ const Bottom = styled.div`
   justify-content: space-between;
 `;
 
-const App = () => (
-  <Wrapper>
-    <Panel>
-      <CurrentCity />
-      <Bottom>
-        <OtherCities />
-        <Forecast />
-      </Bottom>
-    </Panel>
-  </Wrapper>
-)
+const WEATHER = {
+  Melbourne: {
+    cityName: 'Melbourne',
+    temperature: '24.12',
+    humidity: '81%',
+    wind: '7 K/M',
+    weather: 'Clouds',
+    weatherIcon: '01d',
+  }, 
+  Sydney: {
+    cityName: 'Sydney',
+    humidity: '72%',
+    wind: '14 K/M',
+    weather: 'Rain',
+    temperature: '18.15',
+    weatherIcon: '50d',
+  },
+  Brisbane: {
+    cityName: 'Brisbane',
+    humidity: '95%',
+    wind: '2.57 K/M',
+    weather: 'Rain',
+    temperature: '22.42',
+    weatherIcon: '09d',
+  },
+  Perth: {
+    cityName: 'Perth',
+    humidity: '38%',
+    wind: '8.75 K/M',
+    weather: 'Clear',
+    temperature: '29.87',
+    weatherIcon: '01d',
+  }
+};
+
+// Props Drill 痛点 -> Context / Redux
+
+const App = () => {
+  const [data, setData] = useState(WEATHER.Melbourne);
+
+  return (
+    <Wrapper>
+      <Panel>
+        <CurrentCity data={data} />
+        <Bottom>
+          <OtherCities 
+            weathers={[WEATHER.Melbourne, WEATHER.Sydney, WEATHER.Brisbane, WEATHER.Perth]} 
+            handleCityWeatherClick={setData}
+          />
+          <Forecast />
+        </Bottom>
+      </Panel>
+    </Wrapper>
+  );
+}
 
 export default App;

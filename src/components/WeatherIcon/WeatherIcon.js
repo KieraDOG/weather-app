@@ -1,7 +1,11 @@
 import React from 'react';
 
-const WeatherIcon = () => (
-  <img src="http://openweathermap.org/img/wn/01d.png" alt="Clouds" />
+const WeatherIcon = ({ code, className }) => (
+  <img 
+    className={className}
+    src={`http://openweathermap.org/img/wn/${code}.png`} 
+    alt="Clouds" 
+  />
 );
 
 export default WeatherIcon;
