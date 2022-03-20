@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CurrentCity from './app/CurrentCity';
 import OtherCities from './app/OtherCities';
@@ -25,54 +25,66 @@ const Bottom = styled.div`
   justify-content: space-between;
 `;
 
-const WEATHER = {
-  Melbourne: {
-    cityName: 'Melbourne',
-    temperature: '24.12',
-    humidity: '81%',
-    wind: '7 K/M',
-    weather: 'Clouds',
-    weatherIcon: '01d',
-  }, 
-  Sydney: {
-    cityName: 'Sydney',
-    humidity: '72%',
-    wind: '14 K/M',
-    weather: 'Rain',
-    temperature: '18.15',
-    weatherIcon: '50d',
-  },
-  Brisbane: {
-    cityName: 'Brisbane',
-    humidity: '95%',
-    wind: '2.57 K/M',
-    weather: 'Rain',
-    temperature: '22.42',
-    weatherIcon: '09d',
-  },
-  Perth: {
-    cityName: 'Perth',
-    humidity: '38%',
-    wind: '8.75 K/M',
-    weather: 'Clear',
-    temperature: '29.87',
-    weatherIcon: '01d',
-  }
-};
+const getWeathers = () => {
+  const cityIds = ['2158177', '2147714', '2174003', '2063523'];
+  const appId = '2466213f21b4b723d341e00a430a7673';
+  const units = 'metric';
 
-// Props Drill 痛点 -> Context / Redux
+  const parameters = { id: cityIds.join(), appId, units };
+  const url = new URL('https://api.openweathermap.org/data/2.5/group');
+  url.search = new URLSearchParams(parameters).toString();
+
+  return fetch(url);
+}
 
 const App = () => {
-  const [data, setData] = useState(WEATHER.Melbourne);
+  const [currentWeather, setCurrentWeather] = useState();
+  const [weathers, setWeathers] = useState();
+
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getWeathers();
+      const data = await response.json();
+      setData(data);
+    }
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+
+    const weathers = data.list.map((data) => ({
+      cityName: data.name,
+      temperature: data.main.temp,
+      humidity: `${data.main.humidity}%`,
+      wind: `${data.wind.speed} K/M`,
+      weather: data.weather[0].main,
+      weatherIcon: data.weather[0].icon,
+    }));
+
+    setWeathers(weathers);
+    setCurrentWeather(weathers[0]);
+    setLoading(false);
+  }, [data]);
+
+  if (loading) {
+    return 'Loading';
+  }
 
   return (
     <Wrapper>
       <Panel>
-        <CurrentCity data={data} />
+        <CurrentCity data={currentWeather} />
         <Bottom>
           <OtherCities 
-            weathers={[WEATHER.Melbourne, WEATHER.Sydney, WEATHER.Brisbane, WEATHER.Perth]} 
-            handleCityWeatherClick={setData}
+            weathers={weathers} 
+            handleCityWeatherClick={setCurrentWeather}
           />
           <Forecast />
         </Bottom>
